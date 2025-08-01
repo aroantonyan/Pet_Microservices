@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option csharp_namespace = "PriceContracts";
+
+package price;
+
+service PriceService {
+  rpc CreatePrice (CreatePriceRequest) returns (CreatePriceReply);
+  rpc GetPriceById (GetPriceByIdRequest) returns (GetPriceByIdReply);
+  rpc DeletePrice (DeletePriceRequest) returns (DeletePriceReply);
+}
+message DeletePriceRequest {
+  string priceId =1;
+}
+
+message DeletePriceReply {
+  bool success=1;
+}
+
+message CreatePriceRequest {
+  string priceId = 1;
+  double value   = 2;
+  string currency = 3;
+}
+
+message CreatePriceReply {
+  bool success = 1;
+}
+
+message GetPriceByIdRequest {
+  string priceId = 1;
+}
+
+message GetPriceByIdReply {
+  double value    = 1;
+  string currency = 2;
+  bool   found    = 3;
+}
