@@ -10,7 +10,7 @@ using ProductService.API.Extensions;
 using ProductService.API.Middlewares;
 using ProductService.Application.Authentication;
 using ProductService.Domain.Entities;
-using ProductService.Infrastructure.Authentication;
+using ProductService.Infrastructure;
 using ProductService.Infrastructure.Data;
 // using ProductService.Infrastructure.Logging;
 
@@ -48,8 +48,8 @@ builder.Services.AddMediatR(cfg =>
 {
     cfg.RegisterServicesFromAssembly(typeof(LoginCommand).Assembly);
 });
-builder.Services.AddScoped<AccessTokenGenerator>();
-builder.Services.AddScoped<RefreshTokenService>();
+
+builder.Services.AddInfrastructure();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(o =>

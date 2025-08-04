@@ -2,6 +2,7 @@ using Grpc.Core;
 using Npgsql;
 using PriceContracts;
 
+
 namespace PriceService.API.Services.gRPC;
 
 public class PriceGrpcService(IConfiguration cfg) : PriceContracts.PriceService.PriceServiceBase

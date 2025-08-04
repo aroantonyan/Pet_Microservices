@@ -9,7 +9,6 @@
     <ItemGroup>
         <PackageReference Include="Grpc.AspNetCore" Version="2.71.0" />
         <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.71.0" />
-        <PackageReference Include="Grpc.AspNetCore.Web" Version="2.71.0" />
         <PackageReference Include="Grpc.Tools" Version="2.72.0">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
@@ -18,8 +17,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\PriceService.Doman\PriceService.Doman.csproj" />
-        <ProjectReference Include="..\PriceService.Application\PriceService.Application.csproj" />
         <ProjectReference Include="..\PriceService.Contracts\PriceService.Contracts.csproj" />
         <ProjectReference Include="..\PriceService.Infrastructure\PriceService.Infrastructure.csproj" />
     </ItemGroup>
