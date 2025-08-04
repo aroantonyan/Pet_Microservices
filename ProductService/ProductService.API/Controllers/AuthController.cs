@@ -1,6 +1,5 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using ProductService.API.Authentication;
 using ProductService.Application.Authentication;
 using ProductService.Contracts.Authentication;
 

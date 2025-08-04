@@ -18,7 +18,7 @@ public class DeleteProductCommandHandler(AppDbContext context, PriceService.Pric
         var result = await priceService.DeletePriceAsync(
             new DeletePriceRequest { PriceId = product.PriceId.ToString() },
             new CallOptions(cancellationToken: cancellationToken)); 
-        // if (!result.Success) ProductEvents.LogMessage($"PriceId{product.PriceId} was not deleted from price db");
+        //if (!result.Success) ProductEvents.LogMessage($"PriceId{product.PriceId} was not deleted from price db");
         context.Products.Remove(product);
         await context.SaveChangesAsync(cancellationToken);
         return new RequestResponseDto<Product>() { IsSuccess = true };

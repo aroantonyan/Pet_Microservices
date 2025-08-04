@@ -20,7 +20,7 @@ public class ProductController(IMediator mediator) : ControllerBase
         if (result.Data == null) return NotFound(result.ErrorMessage);
         return Ok(result.Data);
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> CreateProduct([FromBody] CreateProductDto product)
     {

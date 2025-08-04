@@ -12,6 +12,8 @@ using ProductService.Application.Authentication;
 using ProductService.Domain.Entities;
 using ProductService.Infrastructure;
 using ProductService.Infrastructure.Data;
+using ProductService.Infrastructure.Logging;
+
 // using ProductService.Infrastructure.Logging;
 
 
@@ -28,8 +30,8 @@ builder.Services.AddStackExchangeRedisCache(o =>
 builder.Services.AddGrpcClient<PriceService.PriceServiceClient>(o =>
     o.Address = new Uri(builder.Configuration["Grpc:PriceUrl"]!));
 
-// builder.Services.AddHttpClient<LogSenderService>((sp, c) =>
-//     c.BaseAddress = new Uri(sp.GetRequiredService<IConfiguration>()["LogService:LogServiceHost"]!));
+builder.Services.AddHttpClient<LogSenderService>((sp, c) =>
+    c.BaseAddress = new Uri(sp.GetRequiredService<IConfiguration>()["LogService:LogServiceHost"]!));
 
 
 builder.Services.AddDbContext<AppDbContext>(o =>

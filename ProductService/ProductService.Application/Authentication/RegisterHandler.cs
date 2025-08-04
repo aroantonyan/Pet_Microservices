@@ -4,7 +4,7 @@ using ProductService.Contracts.Common;
 using ProductService.Domain.Entities;
 using ProductService.Infrastructure.Authentication;
 
-namespace ProductService.API.Authentication;
+namespace ProductService.Application.Authentication;
 
 public sealed class RegisterHandler(UserManager<User> userManager, RefreshTokenService refreshTokenService)
     : IRequestHandler<RegisterCommand, RequestResponseDto<string>>

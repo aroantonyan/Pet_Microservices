@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using PriceContracts;
 using ProductService.Contracts.Common;
+using ProductService.Contracts.Messaging;
+using ProductService.Contracts.Messaging.Interfaces;
 using ProductService.Contracts.Products.Dtos;
 using ProductService.Infrastructure.Data;
 
@@ -14,7 +16,8 @@ using MediatR;
 public class GetProductInfoHandler(
     AppDbContext context,
     IDistributedCache cache,
-    PriceService.PriceServiceClient priceServiceClient)
+    PriceService.PriceServiceClient priceServiceClient,
+    IDiscountPublisher  discountPublisher)
     : IRequestHandler<GetProductInfoQuery, RequestResponseDto<ProductResponseDto>>
 {
     public async Task<RequestResponseDto<ProductResponseDto>> Handle(GetProductInfoQuery query,
@@ -30,6 +33,8 @@ public class GetProductInfoHandler(
             };
         var cacheKey = $"price:{product.PriceId}";
         var cached = await cache.GetStringAsync(cacheKey, cancellationToken);
+
+        await discountPublisher.PublishAsync(new DiscountMessage(Guid.NewGuid(), "darav"), cancellationToken);
 
         if (cached is not null)
         {
