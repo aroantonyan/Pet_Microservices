@@ -1,7 +1,6 @@
 using System.Net;
 using System.Text.Json;
 using ProductService.Contracts.Common;
-using ProductService.Contracts.Logging;
 
 namespace ProductService.API.Middlewares;
 
@@ -28,18 +27,18 @@ public class ExceptionMiddleware(RequestDelegate next)
                 }
             };
 
-            var log = new LogDto
-            {
-                Message = "Unhandled exception",
-                Level = "Error",
-                Source = "ProductService",
-                Timestamp = DateTime.UtcNow,
-                Exception = ex.ToString(),
-                Path = context.Request.Path,
-                TraceId = context.TraceIdentifier
-            };
-
-            //await logger.SendLogAsync(log);
+            // var log = new LogDto
+            // {
+            //     Message = "Unhandled exception",
+            //     Level = "Error",
+            //     Source = "ProductService",
+            //     Timestamp = DateTime.UtcNow,
+            //     Exception = ex.ToString(),
+            //     Path = context.Request.Path,
+            //     TraceId = context.TraceIdentifier
+            // };
+            //
+            // await logger.SendLogAsync(log);
 
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             context.Response.ContentType = "application/json";

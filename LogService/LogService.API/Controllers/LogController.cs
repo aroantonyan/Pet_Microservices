@@ -7,7 +7,7 @@ namespace LogService.API.Controllers;
 
 [ApiController]
 [Route("log")]
-public class LogController() : ControllerBase
+public class LogController : ControllerBase
 {
     [HttpPost("ReceiveLog")]
     public IActionResult ReceiveLog([FromBody] LogDto log)

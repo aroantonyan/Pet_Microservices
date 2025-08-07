@@ -48,7 +48,7 @@ public class PriceGrpcService(IConfiguration cfg) : PriceContracts.PriceService.
         };
     }
 
-    public  async Task<DeletePriceReply> DeletePrice(DeletePriceRequest r, ServerCallContext ctx)
+    public override async Task<DeletePriceReply> DeletePrice(DeletePriceRequest r, ServerCallContext ctx)
     {
         const string sql = "DELETE FROM price WHERE price_id = $1;";
         await using var c = new NpgsqlConnection(ConnString);

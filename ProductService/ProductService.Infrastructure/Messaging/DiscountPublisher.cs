@@ -2,6 +2,7 @@ using System.Text.Json;
 using ProductService.Contracts.Messaging;
 using ProductService.Contracts.Messaging.Interfaces;
 using RabbitMQ.Client;
+using Shared.Messaging.Abstractions;
 
 namespace ProductService.Infrastructure.Messaging;
 
