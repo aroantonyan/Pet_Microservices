@@ -34,7 +34,7 @@ public class GetProductInfoHandler(
         var cacheKey = $"price:{product.PriceId}";
         var cached = await cache.GetStringAsync(cacheKey, cancellationToken);
 
-        await discountPublisher.PublishAsync(new DiscountMessage(Guid.NewGuid(), "darav"), cancellationToken);
+        await discountPublisher.PublishAsync(new DiscountMessage(Guid.NewGuid(), "myau"), cancellationToken);
 
         if (cached is not null)
         {
