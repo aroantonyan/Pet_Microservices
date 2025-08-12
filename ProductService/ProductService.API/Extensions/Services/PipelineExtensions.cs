@@ -8,16 +8,11 @@ public static class PipelineExtensions
     {
         if (app.Environment.IsDevelopment())
             app.UseSwaggerWithUi();
-
-        app.UseHttpsRedirection();
-        
         app.UseMiddleware<ExceptionMiddleware>();
-
+        app.UseHttpsRedirection();
         app.UseRouting();
-
         app.UseAuthentication();
         app.UseAuthorization();
-
         app.MapControllers();
 
         return app;

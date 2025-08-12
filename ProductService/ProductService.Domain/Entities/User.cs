@@ -4,5 +4,5 @@ namespace ProductService.Domain.Entities;
 
 public class User : IdentityUser
 {
-    public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
+    public ICollection<RefreshToken> RefreshTokens { get; set; } 
 }
