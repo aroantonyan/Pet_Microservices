@@ -30,11 +30,9 @@ public sealed class DiscountConsumer(
             autoDelete: false,
             arguments: null, cancellationToken: stoppingToken).ConfigureAwait(false);
 
-        // 3) Back-pressure: не более 32 неподтверждённых deliveries на этого консьюмера
         await _ch.BasicQosAsync(prefetchSize: 0, prefetchCount: 32, global: false, cancellationToken: stoppingToken)
             .ConfigureAwait(false);
 
-        // 4) Push-подписка
         var consumer = new AsyncEventingBasicConsumer(_ch); // принимает IChannel
         consumer.ReceivedAsync += OnReceivedAsync;
         consumer.ShutdownAsync += (_, ea) =>

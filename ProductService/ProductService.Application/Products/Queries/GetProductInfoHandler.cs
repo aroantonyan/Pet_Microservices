@@ -6,12 +6,10 @@ using ProductService.Contracts.Messaging;
 using ProductService.Contracts.Messaging.Interfaces;
 using ProductService.Contracts.Products.Dtos;
 using ProductService.Infrastructure.Data;
-
-namespace ProductService.Application.Products.Queries;
-
 using System.Globalization;
 using MediatR;
 
+namespace ProductService.Application.Products.Queries;
 
 public class GetProductInfoHandler(
     AppDbContext context,
@@ -34,7 +32,7 @@ public class GetProductInfoHandler(
         var cacheKey = $"price:{product.PriceId}";
         var cached = await cache.GetStringAsync(cacheKey, cancellationToken);
 
-        await discountPublisher.PublishAsync(new DiscountMessage(Guid.NewGuid(), "myau"), cancellationToken);
+        await discountPublisher.PublishAsync(new DiscountMessage(Guid.NewGuid(), "Hi"), cancellationToken);
 
         if (cached is not null)
         {
